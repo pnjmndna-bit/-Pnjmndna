@@ -171,3 +171,14 @@ img{
     user-select:none;
     -webkit-user-drag:n
 }
+
+.security-text{
+    width:100%;
+    text-align:center;
+    font-size:12px;
+    color:#7a7a7a;
+    margin-top:18px;
+    padding-top:12px;
+    border-top:1px solid #ececec;
+    line-height:1.5;
+}
