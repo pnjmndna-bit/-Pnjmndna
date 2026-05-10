@@ -9,16 +9,17 @@ body{
     width:100%;
     height:100%;
     min-height:100vh;
-    overflow:hidden;
+    overflow-x:hidden;
+    overflow-y:auto;
     background:#f3f4f8;
     font-family:Arial,sans-serif;
     touch-action:manipulation;
 }
 
-/* AGAR TIDAK BISA DIGESER / ZOOM */
+/* AGAR TIDAK BISA DIGESER */
 body{
     position:fixed;
-    inset:0;
+    insent:0;
     max-width:100vw;
 }
 
@@ -28,94 +29,126 @@ body{
     max-width:430px;
     min-height:100vh;
     margin:auto;
-    overflow:hidden;
     display:flex;
     flex-direction:column;
     background:#f3f4f8;
 }
 
-/* BANNER */
-.banner{
+/* ===================== */
+/* BANNER BOX */
+/* ===================== */
+
+.banner-box{
     width:100%;
-    display:block;
-}
-
-/* JUDUL */
-.judul{
-    width:100%;
-    display:block;
-    margin-top:5px;
-}
-
-/* MENU */
-.menu{
-    width:98%;
-    display:block;
-    margin:0 auto 8px;
-    border-radius:18px;
-}
-
-/* INFO BOX */
-.info-box{
-    width:97%;
-    margin:10px auto 0;
+    height:180px;
+    overflow:hidden;
     background:#fff;
-    border-radius:22px 22px 0 0;
-    padding:18px;
-    margin-top:auto;
 }
 
-/* TEXT */
+.banner-img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+
+/* ===================== */
+/* JUDUL BOX */
+/* ===================== */
+
+.judul-box{
+    width:100%;
+    height:50px;
+    margin:2px auto 7px;
+    overflow:hidden;
+    background:#fff;
+}
+
+.judul-img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+
+/* ===================== */
+/* MENU BOX */
+/* ===================== */
+
+.menu-box{
+    width:98%;
+    height:50px;
+    display:flex;
+    margin-bottom:5px;
+    border-radius:15px;
+    overflow:hidden;
+    background:#fff;
+}
+
+.menu-img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+
+/* ===================== */
+/* INFO BOX */
+/* ===================== */
+
+.info-box{
+    width:98%;
+    margin:3px auto 0;
+    background:#fff;
+    border-radius:15px;
+    padding:18px;
+}
+
 .text-row{
     display:flex;
     justify-content:space-between;
-    align-items:center;
     margin-bottom:18px;
 }
 
-.text-row p,
-.text-row h3{
-    font-size:10px;
+.text-row p{
+    font-size:13px;
     font-weight:700;
-    color:#111;
 }
 
-/* LOGO ROW */
+.text-row h3{
+    font-size:13px;
+    font-weight:700;
+    margin-right:10px;
+}
+
 .logo-row{
     display:flex;
     justify-content:space-between;
     align-items:flex-end;
 }
 
-/* LEFT */
 .left{
     display:flex;
-    align-items:center;
-    gap:14px;
+    gap:30px;
+    margin-left:10px;
 }
 
-/* RIGHT */
-.right{
-    display:flex;
-    align-items:center;
-}
-
-/* UKURAN LOGO */
 .left img{
-    width:42px;
-    height:auto;
+    width:48px;
 }
 
 .right img{
-    width:70px;
-    height:auto;
+    margin-right:15px;
 }
 
-/* RESPONSIVE IMAGE */
+.right img{
+    width:90px;
+}
+
+/* RESPONSIVE */
+
 img{
     max-width:100%;
-    height:auto;
     user-select:none;
     -webkit-user-drag:none;
-    pointer-events:none;
 }
