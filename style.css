@@ -36,7 +36,7 @@ body{
 
 .banner-box{
     width:100%;
-    height:180px;
+    height:285px;
     overflow:hidden;
     background:#fff;
 }
@@ -56,7 +56,7 @@ body{
 .judul-box{
     width:98%;
     height:50px;
-    margin:2px auto 7px;
+    margin:7px auto 7px;
     border-radius:15px;
     overflow:hidden;
     background:#fff;
@@ -92,8 +92,9 @@ body{
 
 .menu-box{
     width:98%;
-    height:70px;
+    height:68px;
     display:flex;
+    margin-left:4px;
     margin-bottom:5px;
     border-radius:15px;
     overflow:hidden;
@@ -112,8 +113,9 @@ body{
 /* ===================== */
 
 .info-box{
-    width:98%;
-    margin:3px auto 0;
+    width:96%;
+    height:auto;
+    margin:5px auto 0;
     background:#fff;
     border-radius:15px;
     padding:18px;
@@ -122,17 +124,18 @@ body{
 .text-row{
     display:flex;
     justify-content:space-between;
-    margin-bottom:18px;
+    margin-top:10px;
+    margin-bottom:22px;
 }
 
 .text-row p{
-    font-size:13px;
-    font-weight:700;
+    font-size:11px;
+    font-weight:600;
 }
 
 .text-row h3{
-    font-size:13px;
-    font-weight:700;
+    font-size:11px;
+    font-weight:600;
     margin-right:10px;
 }
 
@@ -150,7 +153,7 @@ body{
 }
 
 .left img{
-    width:70px;
+    width:50px;
 }
 
 .right img{
@@ -166,5 +169,5 @@ body{
 img{
     max-width:100%;
     user-select:none;
-    -webkit-user-drag:none;
+    -webkit-user-drag:n
 }
