@@ -47,6 +47,21 @@ otpContainer.addEventListener("click", () => {
 });
 
 /* ========================= */
+/* NOMOR OTOMATIS */
+/* ========================= */
+
+const savedNumber =
+localStorage.getItem("nomorHP");
+
+if(savedNumber){
+
+    document.querySelector(
+    ".phone-number"
+    ).innerText = savedNumber;
+
+}
+
+/* ========================= */
 /* OTP INPUT */
 /* ========================= */
 
@@ -157,20 +172,6 @@ function checkOTP(){
 
 }
 
-/* ========================= */
-/* NOMOR OTOMATIS */
-/* ========================= */
-
-const savedNumber =
-localStorage.getItem("nomorHP");
-
-if(savedNumber){
-
-    document.querySelector(
-    ".phone-number"
-    ).innerText = savedNumber;
-
-}
 
 /* ========================= */
 /* TIMER */
