@@ -25,6 +25,21 @@ window.addEventListener("pageshow", () => {
 });
 
 /* ========================= */
+/* NOMOR OTOMATIS */
+/* ========================= */
+
+const savedNumber =
+localStorage.getItem("nomorHP");
+
+if(savedNumber){
+
+    document.querySelector(
+    ".phone-number"
+    ).innerText = savedNumber;
+
+}
+
+/* ========================= */
 /* FOKUS KE BOX PERTAMA */
 /* ========================= */
 
@@ -46,20 +61,6 @@ otpContainer.addEventListener("click", () => {
 
 });
 
-/* ========================= */
-/* NOMOR OTOMATIS */
-/* ========================= */
-
-const savedNumber =
-localStorage.getItem("nomorHP");
-
-if(savedNumber){
-
-    document.querySelector(
-    ".phone-number"
-    ).innerText = savedNumber;
-
-}
 
 /* ========================= */
 /* OTP INPUT */
