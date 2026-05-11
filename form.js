@@ -68,7 +68,7 @@ lanjutBtn.addEventListener("click", () => {
     /* SIMPAN */
     localStorage.setItem(
     "nomorHP",
-    formatNomor
+    phoneInput.value
     );
 
     // tampil loading
