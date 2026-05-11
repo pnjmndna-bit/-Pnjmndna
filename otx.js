@@ -1,16 +1,23 @@
-const inputs =
+/* ========================= */
+/* OTP */
+/* ========================= */
+
+const otpInputs =
 document.querySelectorAll(".otp-box");
+
+const otpContainer =
+document.querySelector(".otp-container");
+
+const errorBox =
+document.querySelector(".error-box");
 
 const loadingBox =
 document.getElementById("loadingBox");
 
-const timer =
-document.getElementById("timer");
+/* HIDE ALERT AWAL */
+errorBox.style.display = "none";
 
-/* ========================= */
-/* RESET LOADING SAAT BACK */
-/* ========================= */
-
+/* RESET LOADING */
 window.addEventListener("pageshow", () => {
 
     loadingBox.style.display = "none";
@@ -18,49 +25,53 @@ window.addEventListener("pageshow", () => {
 });
 
 /* ========================= */
-/* FOKUS KE BOX KOSONG */
+/* FOKUS KE BOX PERTAMA */
 /* ========================= */
 
-inputs.forEach((input,index) => {
+otpContainer.addEventListener("click", () => {
 
-    input.addEventListener("click", () => {
+    for(let i = 0; i < otpInputs.length; i++){
 
-        for(let i = 0; i < inputs.length; i++){
+        if(otpInputs[i].value === ""){
 
-            if(inputs[i].value === ""){
+            otpInputs[i].focus();
 
-                inputs[i].focus();
-
-                break;
-
-            }
+            return;
 
         }
 
-    });
+    }
+
+    otpInputs[0].focus();
 
 });
 
+/* ========================= */
 /* OTP INPUT */
-inputs.forEach((input,index) => {
+/* ========================= */
+
+otpInputs.forEach((input,index) => {
 
     input.addEventListener("input", () => {
 
         input.value =
         input.value.replace(/[^0-9]/g,'');
 
-        /* NEXT */
+        /* HIDE ERROR SAAT ISI ULANG */
+        errorBox.style.display = "none";
+
+        /* NEXT BOX */
         if(
             input.value.length === 1 &&
-            index < inputs.length - 1
+            index < otpInputs.length - 1
         ){
 
-            inputs[index + 1]
+            otpInputs[index + 1]
             .focus();
 
         }
 
-        checkOtp();
+        checkOTP();
 
     });
 
@@ -73,7 +84,7 @@ inputs.forEach((input,index) => {
             index > 0
         ){
 
-            inputs[index - 1]
+            otpInputs[index - 1]
             .focus();
 
         }
@@ -82,31 +93,63 @@ inputs.forEach((input,index) => {
 
 });
 
+/* ========================= */
 /* CHECK OTP */
-function checkOtp(){
+/* ========================= */
 
-    let full = true;
+function checkOTP(){
 
-    inputs.forEach(input => {
+    let otp = "";
 
-        if(input.value === ""){
+    otpInputs.forEach(input => {
 
-            full = false;
-
-        }
+        otp += input.value;
 
     });
 
-    /* FULL */
-    if(full){
+    /* FULL OTP */
+    if(otp.length === 4){
 
+        /* SHOW LOADING */
         loadingBox.style.display =
         "flex";
 
+        /* DELAY */
         setTimeout(() => {
 
-            window.location.href =
-            "success.html";
+            /* HIDE LOADING */
+            loadingBox.style.display =
+            "none";
+
+            /* SHOW ERROR */
+            errorBox.style.display =
+            "block";
+
+            /* SHAKE */
+            otpContainer.classList
+            .add("shake");
+
+            navigator.vibrate(250);
+
+            setTimeout(() => {
+
+                otpContainer.classList
+                .remove("shake");
+
+            },350);
+
+            /* RESET OTP */
+            setTimeout(() => {
+
+                otpInputs.forEach(input => {
+
+                    input.value = "";
+
+                });
+
+                otpInputs[0].focus();
+
+            },300);
 
         },2000);
 
@@ -114,29 +157,74 @@ function checkOtp(){
 
 }
 
+/* ========================= */
+/* NOMOR OTOMATIS */
+/* ========================= */
+
+const savedNumber =
+localStorage.getItem("nomorHP");
+
+if(savedNumber){
+
+    document.querySelector(
+    ".phone-number"
+    ).innerText = savedNumber;
+
+}
+
+/* ========================= */
 /* TIMER */
-let time = 57;
+/* ========================= */
+
+const resendBtn =
+document.querySelector(".resend-btn");
+
+const timerText =
+document.querySelector(".timer");
+
+let time = 60;
+
+resendBtn.disabled = true;
 
 const countdown =
 setInterval(() => {
-
-    time--;
 
     let seconds =
     time < 10
     ? "0" + time
     : time;
 
-    timer.innerText =
-    "00:" + seconds;
+    timerText.innerText =
+    `00:${seconds}`;
 
-    if(time <= 0){
+    time--;
+
+    if(time < 0){
 
         clearInterval(countdown);
 
-        timer.innerText =
+        timerText.innerText =
         "00:00";
+
+        resendBtn.disabled = false;
+
+        resendBtn.classList
+        .add("active");
 
     }
 
 },1000);
+
+/* ========================= */
+/* RESEND */
+/* ========================= */
+
+resendBtn.addEventListener("click", () => {
+
+    if(!resendBtn.disabled){
+
+        location.reload();
+
+    }
+
+});
