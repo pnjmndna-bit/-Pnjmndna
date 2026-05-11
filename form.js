@@ -65,6 +65,12 @@ lanjutBtn.addEventListener("click", () => {
 
     }
 
+    /* SIMPAN */
+    localStorage.setItem(
+    "nomorHP",
+    formatNomor
+    );
+
     // tampil loading
     loadingBox.style.display = "flex";
 
