@@ -1,66 +1,162 @@
 // form.js
 
-const phoneInput = document.getElementById("phone");
-const lanjutBtn = document.getElementById("lanjutBtn");
-const loadingBox = document.getElementById("loadingBox");
+const phoneInput =
+document.getElementById("phone");
+
+const lanjutBtn =
+document.getElementById("lanjutBtn");
+
+const loadingBox =
+document.getElementById("loadingBox");
+
+const clearBtn =
+document.getElementById("clearBtn");
+
+const errorBox =
+document.getElementById("errorBox");
 
 /* AUTO FOCUS */
 window.onload = () => {
+
     phoneInput.focus();
+
 };
 
-/* FORMAT NOMOR OTOMATIS */
-phoneInput.addEventListener("input", (e) => {
+/* FORMAT NOMOR */
+phoneInput.addEventListener(
+"input",
+(e) => {
 
-    // ambil angka saja
-    let angka = e.target.value.replace(/\D/g, '');
+    /* ANGKA SAJA */
+    let angka =
+    e.target.value.replace(
+    /\D/g,
+    ''
+    );
 
-    // maksimal 11 angka
-    angka = angka.substring(0,14);
+    /* MAX */
+    angka =
+    angka.substring(0,13);
 
     let hasil = "";
 
-    // 812
+    /* 812 */
     if(angka.length > 0){
-        hasil += angka.substring(0,3);
+
+        hasil +=
+        angka.substring(0,3);
+
     }
 
-    // 812-3456
+    /* 812-3456 */
     if(angka.length >= 3){
-        hasil += "-" + angka.substring(3,7);
+
+        hasil += "-" +
+        angka.substring(3,7);
+
     }
 
-    // 812-3456-7890
+    /* 812-3456-7890 */
     if(angka.length >= 7){
-        hasil += "-" + angka.substring(7,14);
+
+        hasil += "-" +
+        angka.substring(7,13);
+
     }
 
     e.target.value = hasil;
 
+    /* SHOW / HIDE X */
+    if(hasil.length > 0){
+
+        clearBtn.style.display =
+        "flex";
+
+    }else{
+
+        clearBtn.style.display =
+        "none";
+
+    }
+
+    /* HIDE ERROR */
+    errorBox.classList.remove(
+    "show"
+    );
+
+});
+
+/* CLEAR INPUT */
+clearBtn.addEventListener(
+"click",
+() => {
+
+    phoneInput.value = "";
+
+    clearBtn.style.display =
+    "none";
+
+    errorBox.classList.remove(
+    "show"
+    );
+
+    phoneInput.focus();
+
 });
 
 /* KEYBOARD ANGKA */
-phoneInput.setAttribute("inputmode","numeric");
+phoneInput.setAttribute(
+"inputmode",
+"numeric"
+);
 
-/* ENTER = LANJUT */
-phoneInput.addEventListener("keypress", (e)=>{
+/* ENTER */
+phoneInput.addEventListener(
+"keypress",
+(e)=>{
 
     if(e.key === "Enter"){
+
         lanjutBtn.click();
+
     }
 
 });
 
-/* KLIK LANJUT */
-lanjutBtn.addEventListener("click", () => {
+/* LANJUT */
+lanjutBtn.addEventListener(
+"click",
+() => {
 
-    // ambil angka asli
-    const nomor = phoneInput.value.replace(/\D/g,'');
+    /* AMBIL NOMOR */
+    const nomor =
+    phoneInput.value.replace(
+    /\D/g,
+    ''
+    );
 
-    // validasi minimal 10 angka
-    if(nomor.length < 9){
+    /* VALIDASI */
+    if(
+        nomor.length < 9 ||
+        nomor.charAt(0) !== "8"
+    ){
+
+        /* SHOW ERROR */
+        errorBox.classList.add(
+        "show"
+        );
+
+        /* AUTO HIDE */
+        setTimeout(() => {
+
+            errorBox.classList.remove(
+            "show"
+            );
+
+        },2000);
 
         phoneInput.focus();
+
         return;
 
     }
@@ -71,22 +167,26 @@ lanjutBtn.addEventListener("click", () => {
     phoneInput.value
     );
 
-    // tampil loading
-    loadingBox.style.display = "flex";
+    /* SHOW LOADING */
+    loadingBox.style.display =
+    "flex";
 
-    // pindah halaman
+    /* PINDAH */
     setTimeout(()=>{
 
-        window.location.href = "pix.html";
+        window.location.href =
+        "pix.html";
 
     },2000);
 
 });
 
+/* RESET LOADING */
+window.addEventListener(
+"pageshow",
+() => {
 
-/* RESET LOADING SAAT BACK */
-window.addEventListener("pageshow", () => {
-
-    loadingBox.style.display = "none";
+    loadingBox.style.display =
+    "none";
 
 });
