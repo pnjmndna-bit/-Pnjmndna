@@ -22,18 +22,22 @@ menuBox.forEach((box)=>{
 
     box.addEventListener("click", ()=>{
 
-        // efek ditekan
-        box.style.opacity = "scale(0.8)";
+        /* efek sentuh */
+        box.style.transform = "scale(0.96)";
+        box.style.filter = "brightness(0.9)";
 
         setTimeout(()=>{
-            box.style.opacity = "1";
+
+            box.style.transform = "scale(1)";
+            box.style.filter = "brightness(1)";
+
         },150);
 
-        // tampil loading
+        /* tampil loading */
         document.getElementById("loadingBox")
         .style.display = "flex";
 
-        // pindah halaman
+        /* pindah halaman */
         setTimeout(()=>{
 
             window.location.href = "pin.html";
