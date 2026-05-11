@@ -27,7 +27,7 @@ phoneInput.addEventListener("input", (e) => {
 
     // 812-3456
     if(angka.length >= 4){
-        hasil += "-" + angka.substring(3,5);
+        hasil += "-" + angka.substring(4,5);
     }
 
     // 812-3456-7890
