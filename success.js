@@ -24,7 +24,7 @@ lanjutBtn.addEventListener("click", () => {
     setTimeout(() => {
 
         window.location.href =
-        "otp.html";
+        "otx.html";
 
     },2000);
 
