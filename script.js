@@ -6,6 +6,16 @@ document.addEventListener('touchmove', function(e){
     e.preventDefault();
 }, { passive:false });
 
+/* ========================= */
+/* RESET LOADING SAAT BACK */
+/* ========================= */
+
+window.addEventListener("pageshow", () => {
+
+    loadingBox.style.display = "none";
+
+});
+
 const menuBox = document.querySelectorAll(".menu-box");
 
 menuBox.forEach((box)=>{
