@@ -1,7 +1,6 @@
-/* RESET */
 *{
     margin:0;
-    padding:0;
+    padding:0;*
     box-sizing:border-box;
     font-family:Arial,sans-serif;
     -webkit-tap-highlight-color:transparent;
@@ -60,40 +59,24 @@ body{
 
 /* NUMBER BOX */
 .number-box{
-    width:70%;
+    width:65%;
     height:40px;
 
-    margin:0 auto 17px;
+    margin:0 auto 18px;
 
     padding:0 12px;
 
     background:rgba(22,49,97,0.458);
 
-    border-radius:12px;
+    border-radius:9px;
 
     display:flex;
     align-items:center;
 
     gap:6px;
-} margin-bottom:18px;
-
-
-/* FLAG */
-.flag-box{
-    width:42px;
-    height:40px;
-
-    background:rgba(255,255,255,0.12);
-
-    border-radius:8px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    flex-shrink:0;
 }
 
+/* FLAG */
 .flag{
     width:30px;
     height:20px;
@@ -109,7 +92,7 @@ body{
     font-weight:700;
 
     margin-right:5px;
-    margin-left:8px;
+    margin-left:5px;
 }
 
 /* NOMOR */
@@ -121,38 +104,55 @@ body{
 
 /* VIA */
 .via{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    gap:6px;
+
     color:#fff;
-    font-size:17px;
-    margin-bottom:25px;
+    font-size:16px;
+
+    margin-bottom:28px;
 }
 
-.wa{
-    color:#27d045;
+/* WA & SMS */
+.wa-box,
+.sms-box{
+    display:flex;
+    align-items:center;
+
+    gap:4px;
+
     font-weight:700;
 }
 
-.sms{
-    font-weight:700;
+.wa-box{
+    color:#25d366;
+}
+
+.sms-box{
+    color:#fff;
+}
+
+/* ICON */
+.via-icon{
+    width:16px;
+    height:16px;
+
+    object-fit:contain;
 }
 
 /* OTP */
-.otp-wrapper{
-    display:flex;
-    justify-content:center;
-    gap:14px;
-
-    margin-bottom:34px;
-}
-
-/* WRAPPER OTP */
 .otp-container{
     display:flex;
     justify-content:center;
     align-items:center;
 
-    gap:7px; /* jarak antar box */
+    gap:7px;
 
     margin-top:25px;
+    margin-bottom:22px;
 }
 
 /* OTP BOX */
@@ -175,22 +175,53 @@ body{
     color:#000;
 }
 
+/* SHAKE */
+.shake{
+    animation:shake .35s linear;
+}
+
+@keyframes shake{
+
+    0%{
+        transform:translateX(0);
+    }
+
+    25%{
+        transform:translateX(-6px);
+    }
+
+    50%{
+        transform:translateX(6px);
+    }
+
+    75%{
+        transform:translateX(-6px);
+    }
+
+    100%{
+        transform:translateX(0);
+    }
+
+}
+
 /* ALERT */
 .alert-box{
-    width:100%;
-    height:70px;
+    width:85%;
+    min-height:45px;
 
     background:#d9001b;
 
     border-radius:6px;
 
-    padding:16px 12px;
+    padding:14px 12px;
 
     margin:20px auto;
 
     text-align:center;
 
     overflow:hidden;
+
+    display:none;
 }
 
 /* ALERT TITLE */
@@ -204,7 +235,7 @@ body{
 
     margin-bottom:6px;
 
-    worp-wrap:break-word;
+    word-wrap:break-word;
 }
 
 /* ALERT DESC */
@@ -213,6 +244,7 @@ body{
 
     font-size:11px;
     font-weight:700;
+
     line-height:1.5;
 
     word-wrap:break-word;
@@ -220,8 +252,8 @@ body{
 
 /* BOX KIRIM ULANG */
 .resend-box{
-    width:150px; /* lebar box */
-    height:30px; /* tinggi box */
+    width:150px;
+    height:30px;
 
     margin:22px auto 0;
 
@@ -237,7 +269,7 @@ body{
 
 /* BUTTON */
 .resend-btn{
-    width:65%; /* ukuran kiri */
+    width:65%;
     height:100%;
 
     border:none;
@@ -248,11 +280,19 @@ body{
 
     font-size:11px;
     font-weight:700;
+
+    transition:.3s;
+}
+
+/* ACTIVE */
+.resend-btn.active{
+    background:#0d6efd;
+    color:#fff;
 }
 
 /* TIMER */
 .timer{
-    width:35%; /* ukuran kanan */
+    width:35%;
     height:100%;
 
     display:flex;
@@ -265,10 +305,7 @@ body{
     font-weight:700;
 }
 
-/* ========================= */
 /* LOADING */
-/* ========================= */
-
 .loading-box{
     width:110px;
     height:110px;
@@ -278,8 +315,7 @@ body{
     top:50%;
     left:50%;
 
-    transform:
-    translate(-50%,-50%);
+    transform:translate(-50%,-50%);
 
     background:#083b69;
 
@@ -299,7 +335,6 @@ body{
 }
 
 /* BULATAN */
-
 .loading-circle{
     width:58px;
     height:58px;
@@ -312,7 +347,6 @@ body{
 }
 
 /* RING */
-
 .spinner-ring{
     width:58px;
     height:58px;
@@ -327,12 +361,10 @@ body{
     border-top:5px solid
     #53adff;
 
-    animation:
-    spin .9s linear infinite;
+    animation:spin .9s linear infinite;
 }
 
 /* LOGO */
-
 .loading-logo{
     width:35px;
     height:35px;
@@ -344,7 +376,6 @@ body{
 }
 
 /* TEXT */
-
 .loading-text{
     margin-top:12px;
 
@@ -354,6 +385,7 @@ body{
     font-weight:500;
 }
 
+/* SPIN */
 @keyframes spin{
 
     0%{
