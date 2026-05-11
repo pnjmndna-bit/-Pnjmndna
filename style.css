@@ -44,6 +44,7 @@ body{
     width:98%;
     height:240px;
     margin-left:4px;
+    margin-bottom:5px;
     border-radius:10px;
     overflow:hidden;
     background:#fff;
@@ -65,7 +66,6 @@ body{
     width:98%;
     height:60px;
     margin-left:4px;
-3   margin-top:10px;
     border-radius:10px;
     overflow:hidden;
     background:#fff;
