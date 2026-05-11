@@ -1,55 +1,67 @@
-/* RESET */
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial,sans-serif;
-    -webkit-tap-highlight-color:transparent;
 }
 
-html,body{
+html,
+body{
     width:100%;
-    height:100%;
-    overflow:hidden;
-    background:#118eea;
+    min-height:100%;
+
+    overflow-x:hidden;
+    overflow-y:auto;
+
+    background:#118EEA;
+
+    font-family:Arial,sans-serif;
+
+    -webkit-overflow-scrolling:touch;
 }
 
 body{
-    overscroll-behavior:none;
-    touch-action:manipulation;
+    position:relative;
 }
 
 /* CONTAINER */
 .container{
     width:100%;
-    padding:8px 25px;
+    max-width:430px;
+
+    margin:auto;
+
+    min-height:100vh;
+
+    padding-top:22px;
+    padding-bottom:50px;
+
     text-align:center;
 }
 
-/* WRAPPER LOGO */
+/* LOGO */
 .logo-wrap{
     width:100%;
+
     display:flex;
     justify-content:center;
 
-    margin-top:28px;
+    margin-top:14px;
     margin-bottom:42px;
 }
 
-/* LOGO */
-.logo {
-  width: 120px;
-  height:auto;
+.logo{
+    width:120px;
 
-  display: block;
-  
+    height:auto;
+
+    display:block;
 }
 
 /* TITLE */
 .title{
     color:#fff;
 
-    font-size:13px;
+    font-size:14px;
     line-height:1.5;
     font-weight:400;
 
@@ -62,19 +74,20 @@ body{
 
 /* INPUT BOX */
 .input-box{
-    width:100%;
+    width:70%;
+    max-width:340px;
     height:38px;
 
     background:#f5f5f5;
 
-    border-radius:12px;
+    border-radius:9px;
 
     display:flex;
     align-items:center;
 
     padding:0 9px;
 
-    margin-bottom:24px;
+    margin:0 auto 20px;
 }
 
 /* FLAG */
@@ -85,6 +98,8 @@ body{
     object-fit:cover;
 
     border-radius:2px;
+
+    flex-shrink:0;
 }
 
 /* +62 */
@@ -95,6 +110,8 @@ body{
 
     font-size:19px;
     font-weight:700;
+
+    flex-shrink:0;
 }
 
 /* INPUT */
@@ -106,21 +123,52 @@ body{
 
     background:transparent;
 
-    margin-left:10px;
+    margin-left:7px;
 
     color:#000;
 
     font-size:19px;
     font-weight:700;
+
+    min-width:0;
 }
 
+/* PLACEHOLDER */
 .input-box input::placeholder{
     color:#c9c9c9;
 }
 
+/* CLEAR BUTTON */
+.clear-btn{
+    width:24px;
+    height:24px;
+
+    border-radius:50%;
+
+    background:#d8d8d8;
+
+    color:#fff;
+
+    font-size:12px;
+    font-weight:bold;
+
+    display:none;
+
+    align-items:center;
+    justify-content:center;
+
+    flex-shrink:0;
+
+    margin-left:6px;
+
+    cursor:pointer;
+
+    user-select:none;
+}
+
 /* DESC */
 .desc{
-    width:100%;
+    width:77%;
 
     margin:0 auto 28px;
 
@@ -137,16 +185,15 @@ body{
 
 /* BUTTON */
 .btn{
-    width:70%;
+    width:55%;
     height:38px;
 
     border:none;
-    border-radius:12px;
+    border-radius:4px;
 
     background:#f5f5f5;
 
     color:#118eea;
-    
 
     font-size:14px;
     font-weight:700;
@@ -154,7 +201,65 @@ body{
     cursor:pointer;
 }
 
-/* LOADING BOX */
+/* ERROR BOX */
+.error-box{
+    position:fixed;
+
+    top:20px;
+    left:50%;
+
+    transform:
+    translateX(-50%)
+    translateY(-20px);
+
+    width:80%;
+    max-width:340px;
+
+    background:#d9001b;
+
+    color:#fff;
+
+    font-size:13px;
+    font-weight:600;
+
+    line-height:1.5;
+
+    padding:12px 14px;
+
+    border-radius:10px;
+
+    text-align:center;
+
+    box-shadow:
+    0 4px 14px
+    rgba(0,0,0,.18);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    z-index:99999;
+
+    transition:
+    opacity .25s ease,
+    transform .25s ease,
+    visibility .25s ease;
+}
+
+/* SHOW */
+.error-box.show{
+
+    opacity:1;
+
+    visibility:visible;
+
+    transform:
+    translateX(-50%)
+    translateY(0);
+
+}
+
+/* LOADING */
 .loading-box{
     width:110px;
     height:110px;
@@ -164,13 +269,15 @@ body{
     top:50%;
     left:50%;
 
-    transform:translate(-50%,-50%);
+    transform:
+    translate(-50%,-50%);
 
     background:#083b69;
 
     border-radius:15px;
 
     display:none;
+
     flex-direction:column;
     justify-content:center;
     align-items:center;
@@ -178,10 +285,11 @@ body{
     z-index:9999;
 
     box-shadow:
-    0 8px 30px rgba(0,0,0,.30);
+    0 8px 30px
+    rgba(0,0,0,.30);
 }
 
-/* WRAP */
+/* LOADING WRAP */
 .loading-circle{
     width:58px;
     height:58px;
@@ -193,7 +301,7 @@ body{
     justify-content:center;
 }
 
-/* RING YANG MUTER */
+/* RING */
 .spinner-ring{
     width:58px;
     height:58px;
@@ -202,13 +310,17 @@ body{
 
     border-radius:50%;
 
-    border:5px solid rgba(255,255,255,.20);
-    border-top:5px solid #53adff;
+    border:5px solid
+    rgba(255,255,255,.20);
 
-    animation:spin .9s linear infinite;
+    border-top:5px solid
+    #53adff;
+
+    animation:
+    spin .9s linear infinite;
 }
 
-/* LOGO TETAP */
+/* LOGO */
 .loading-logo{
     width:35px;
     height:35px;
@@ -216,6 +328,7 @@ body{
     object-fit:contain;
 
     position:relative;
+
     z-index:2;
 }
 
@@ -231,7 +344,7 @@ body{
 
 /* SPIN */
 @keyframes spin{
-    
+
     100%{
         transform:rotate(360deg);
     }
