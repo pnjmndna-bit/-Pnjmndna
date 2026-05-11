@@ -23,7 +23,11 @@ menuBox.forEach((box)=>{
     box.addEventListener("click", ()=>{
 
         // efek ditekan
-        box.style.transform = "scale(0.97)";
+        box.style.opacity = "scale(0.8)";
+
+        setTimeout(()=>{
+            box.style.opacity = "1";
+        },150);
 
         // tampil loading
         document.getElementById("loadingBox")
