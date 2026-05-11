@@ -69,6 +69,8 @@ body{
     border-radius:10px;
     overflow:hidden;
     background:#fff;
+    position:relative;
+    top:5px;
 }
 
 .judul-img{
