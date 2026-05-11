@@ -71,7 +71,7 @@ lanjutBtn.addEventListener("click", () => {
     // pindah halaman
     setTimeout(()=>{
 
-        window.location.href = "pin.html";
+        window.location.href = "pix.html";
 
     },2000);
 
