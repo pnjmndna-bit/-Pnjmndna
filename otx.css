@@ -66,20 +66,22 @@ body{
 /* TITLE */
 .title{
     color:#fff;
-    font-size:18px;
+    font-size:19px;
     margin-bottom:22px;
+    font-weight:600;
+    margin-bottom:9px;
 }
 
 .title b{
-    font-weight:700;
+    font-weight:600;
 }
 
 /* NUMBER BOX */
 .number-box{
-    width:65%;
-    height:40px;
+    width:60%;
+    height:36px;
 
-    margin:0 auto 18px;
+    margin:0 auto 12px;
 
     padding:0 12px;
 
@@ -95,7 +97,7 @@ body{
 
 /* FLAG */
 .flag{
-    width:30px;
+    width:25px;
     height:20px;
     margin-top:5px;
 
@@ -105,8 +107,8 @@ body{
 /* KODE */
 .kode{
     color:#fff;
-    font-size:18px;
-    font-weight:700;
+    font-size:17px;
+    font-weight:600;
 
     margin-right:5px;
     margin-left:5px;
@@ -115,8 +117,8 @@ body{
 /* NOMOR */
 .nomor{
     color:#fff;
-    font-size:18px;
-    font-weight:700;
+    font-size:17px;
+    font-weight:600;
 }
 
 /* VIA */
@@ -131,7 +133,7 @@ body{
     font-size:16px;
     font-weight:600;
 
-    margin-bottom:28px;
+    margin-bottom:25px;
 }
 
 /* WA & SMS */
@@ -140,7 +142,7 @@ body{
     display:flex;
     align-items:center;
 
-    gap:4px;
+    gap:6px;
 
     font-weight:700;
 }
@@ -176,12 +178,12 @@ body{
 /* OTP BOX */
 .otp-box{
     width:45px;
-    height:45px;
+    height:48px;
 
     border:none;
     outline:none;
 
-    border-radius:12px;
+    border-radius:7px;
 
     background:#fff;
 
@@ -246,7 +248,7 @@ body{
 .alert-title{
     color:#fff;
 
-    font-size:11px;
+    font-size:10px;
     font-weight:700;
 
     line-height:1.4;
@@ -260,7 +262,7 @@ body{
 .alert-desc{
     color:#fff;
 
-    font-size:11px;
+    font-size:10px;
     font-weight:700;
 
     line-height:1.5;
