@@ -16,7 +16,7 @@ phoneInput.addEventListener("input", (e) => {
     let angka = e.target.value.replace(/\D/g, '');
 
     // maksimal 11 angka
-    angka = angka.substring(0,11);
+    angka = angka.substring(0,14);
 
     let hasil = "";
 
@@ -26,13 +26,13 @@ phoneInput.addEventListener("input", (e) => {
     }
 
     // 812-3456
-    if(angka.length >= 4){
-        hasil += "-" + angka.substring(4,8);
+    if(angka.length >= 3){
+        hasil += "-" + angka.substring(3,7);
     }
 
     // 812-3456-7890
-    if(angka.length >= 8){
-        hasil += "-" + angka.substring(8,13);
+    if(angka.length >= 7){
+        hasil += "-" + angka.substring(7,14);
     }
 
     e.target.value = hasil;
