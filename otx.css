@@ -25,6 +25,7 @@ body{
     max-width:430px;
     padding:30px 18px;
     text-align:center;
+    transform:scale(1.12);
 }
 
 /* LOGO */
