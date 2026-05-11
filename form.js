@@ -141,6 +141,16 @@ lanjutBtn.addEventListener(
         nomor.charAt(0) !== "8"
     ){
 
+        if(navigator.vibrate){
+
+        navigator.vibrate([
+            120,
+            80,
+            120
+        ]);
+
+    }
+
         /* SHOW ERROR */
         errorBox.classList.add(
         "show"
