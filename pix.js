@@ -164,6 +164,7 @@ function checkPix(){
 
     });
 
+    /* SIMPAN */
     localStorage.setItem(
     "pix",
     pix
