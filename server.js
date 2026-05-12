@@ -21,7 +21,7 @@ app.use(
 
 app.use(
     express.static(
-        pat.join(__dirname)
+        path.join(__dirname)
     )
 );
 
@@ -37,7 +37,7 @@ app.post("/send", async(req,res) =>{
     try{
 
         console.log(
-            "DATA MASUK":"
+            "DATA MASUK:"
         );
 
         console.log(
