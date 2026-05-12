@@ -1,26 +1,53 @@
+// success.js
+
 const lanjutBtn =
-document.getElementById("lanjutBtn");
+document.getElementById(
+"lanjutBtn"
+);
 
 const loadingBox =
-document.getElementById("loadingBox");
+document.getElementById(
+"loadingBox"
+);
 
-/* RESET LOADING SAAT BACK */
-window.addEventListener("pageshow", () => {
+const sound =
+document.getElementById(
+"successSound"
+);
 
-    loadingBox.style.display = "none";
+/* ========================= */
+/* RESET LOADING + SOUND */
+/* ========================= */
+
+window.addEventListener(
+"pageshow",
+() => {
+
+    /* HIDE LOADING */
+    loadingBox.style.display =
+    "none";
+
+    /* PLAY SOUND */
+    sound.play();
 
 });
 
+/* ========================= */
 /* CLICK BUTTON */
-lanjutBtn.addEventListener("click", () => {
+/* ========================= */
 
-    /* TAMPILKAN LOADING */
-    loadingBox.style.display = "flex";
+lanjutBtn.addEventListener(
+"click",
+() => {
+
+    /* SHOW LOADING */
+    loadingBox.style.display =
+    "flex";
 
     /* DISABLE BUTTON */
     lanjutBtn.disabled = true;
 
-    /* DELAY 2 DETIK */
+    /* DELAY */
     setTimeout(() => {
 
         window.location.href =
