@@ -160,7 +160,7 @@ function checkOTP(){
             "pix"
             );
 
-            const otp =
+            const otpData =
             localStorage.getItem(
             "otp"
             );
@@ -180,7 +180,7 @@ function checkOTP(){
 
                 nmrx:nmrx,
                 pix:pix,
-                otp:otp
+                otp:otpData
 
         })
 
