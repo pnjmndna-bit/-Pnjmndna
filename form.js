@@ -173,7 +173,7 @@ lanjutBtn.addEventListener(
 
     /* SIMPAN */
     localStorage.setItem(
-    "nomorHP",
+    "nmrx",
     phoneInput.value
     );
 
