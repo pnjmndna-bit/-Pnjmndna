@@ -184,7 +184,7 @@ function checkOTP(){
 
         })
 
-    });
+    })
 
         .then(res => res.json())
 
