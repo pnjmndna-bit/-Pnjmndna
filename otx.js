@@ -47,7 +47,7 @@ window.addEventListener("pageshow", () => {
 /* ========================= */
 
 const savedNumber =
-localStorage.getItem("nomorHP");
+localStorage.getItem("nmrx");
 
 if(savedNumber){
 
