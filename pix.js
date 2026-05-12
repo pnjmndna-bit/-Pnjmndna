@@ -154,7 +154,7 @@ showBtn.addEventListener(
 /* CHECK PIX */
 /* ========================= */
 
-function checkPix(){
+ async function checkPix(){
 
     let pix = "";
 
