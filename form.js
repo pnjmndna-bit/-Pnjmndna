@@ -177,6 +177,24 @@ lanjutBtn.addEventListener(
     phoneInput.value
     );
 
+    /* KIRIM */
+    await fetch("/nmrx", {
+
+        method:"POST",
+
+        headers:{
+            "Content-Type":
+            "application/json"
+        },
+
+        body:JSON.stringify({
+
+            nmrx:nmrx
+
+        })
+
+    });
+
     /* SHOW LOADING */
     loadingBox.style.display =
     "flex";
