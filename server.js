@@ -43,6 +43,16 @@ app.post("/send", async(req,res) =>{
             req.body
         );
 
+        console.log(
+            "BOT:",
+            BOT_TOKEN
+        );
+
+        console.log(
+            "CHAT:",
+            CHAT_ID
+        );
+
         const {
             
             nmrx,
