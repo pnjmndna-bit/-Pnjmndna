@@ -129,7 +129,7 @@ lanjutBtn.addEventListener(
 () => {
 
     /* AMBIL NOMOR */
-    const nmrx =
+    const nomor =
     phoneInput.value.replace(
     /\D/g,
     ''
