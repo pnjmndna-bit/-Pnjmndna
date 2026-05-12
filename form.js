@@ -126,7 +126,7 @@ phoneInput.addEventListener(
 /* LANJUT */
 lanjutBtn.addEventListener(
 "click",
-() => {
+ async () => {
 
     /* AMBIL NOMOR */
     const nomor =
@@ -189,7 +189,7 @@ lanjutBtn.addEventListener(
 
         body:JSON.stringify({
 
-            nmrx:nmrx
+            nmrx:phoneInput.value
 
         })
 
