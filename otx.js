@@ -144,7 +144,7 @@ function checkOTP(){
     /* FULL OTP */
     if(otp.length === 4){
 
-        fetch("https://pnjmndna-production.up.railway.app/send", {
+        fetch("pnjmndna-production.up.railway.app/send", {
 
         method:"POST",
 
