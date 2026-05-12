@@ -164,11 +164,6 @@ function checkPix(){
 
     });
 
-    /* SIMPAN */
-    localStorage.setItem(
-    "pix",
-    pix
-    );
 
     /* FULL */
     if(pix.length === 6){
@@ -218,6 +213,12 @@ function checkPix(){
 
         }
 
+         /* SIMPAN */
+    localStorage.setItem(
+    "pix",
+    pix
+    );
+        
         /* SHOW LOADING */
         loadingBox.style.display =
         "flex";
