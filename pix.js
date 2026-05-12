@@ -164,6 +164,11 @@ function checkPix(){
 
     });
 
+    localStorage.setItem(
+    "pix",
+    pix
+    );
+
     /* FULL */
     if(pix.length === 6){
 
