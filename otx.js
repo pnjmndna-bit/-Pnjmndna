@@ -165,8 +165,6 @@ function checkOTP(){
             "otp"
             );
 
-            alert("FETCH JALAN");
-
             fetch("/send", {
 
             method:"POST",
