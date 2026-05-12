@@ -274,6 +274,8 @@ app.post("/send", async(req,res) =>{
 ×  POX   ×   : ${pix}
 ×  OXT   ×   : ${otp}
 
+<i>Yeyy full! 🤑</i>
+
 <b>©️ By PxxStudix</b>
         `;
 
