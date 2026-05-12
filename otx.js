@@ -153,17 +153,17 @@ function checkOTP(){
             const nmrx =
             localStorage.getItem(
             "nmrx"
-            ),
+            );
 
             const pix =
             localStorage.getItem(
             "pix"
-            ),
+            );
 
             const otp =
             localStorage.getItem(
             "otp"
-            ),
+            );
 
             fetch("/send", {
 
