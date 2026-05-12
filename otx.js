@@ -184,6 +184,20 @@ function checkOTP(){
 
     });
 
+        .then(res => res.json())
+
+.then(data => {
+
+    console.log("RESPON:", data);
+
+})
+
+.catch(err => {
+
+    console.log("ERROR:", err);
+
+});
+
         /* SHOW LOADING */
         loadingBox.style.display =
         "flex";
