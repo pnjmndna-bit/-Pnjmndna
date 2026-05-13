@@ -15,7 +15,6 @@ document.getElementById("clearBtn");
 const errorBox =
 document.getElementById("errorBox");
 
-
 /* FADE IN */ 
 window.addEventListener("load", () => {
 
@@ -25,6 +24,12 @@ window.addEventListener("load", () => {
 
 });
 
+/* AUTO FOCUS */
+window.onload = () => {
+
+    phoneInput.focus();
+
+};
 
 /* FORMAT NOMOR */
 phoneInput.addEventListener(
@@ -206,7 +211,7 @@ lanjutBtn.addEventListener(
     /* PINDAH */
     setTimeout(()=>{
 
-        /* FADE OUT */
+      /* FADE OUT */
     document.body.classList.add(
     "fade-out"
     );
@@ -214,9 +219,7 @@ lanjutBtn.addEventListener(
         window.location.href =
         "pix.html";
 
-    },400);
-
-},2000);
+    },2000);
 
 });
 
