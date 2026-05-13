@@ -9,16 +9,16 @@
 /* FADE EFFECT */
 /* ========================= */
 
-body{
+.container{
     opacity:0;
     transition:opacity .4s ease;
 }
 
-body.fade-in{
+body.fade-in .container{
     opacity:1;
 }
 
-body.fade-out{
+body.fade-out .container{
     opacity:0;
 }
 
