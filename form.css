@@ -19,7 +19,7 @@
 
     background:#000;
 
-    opacity:0;
+    opacity:1;
 
     pointer-events:none;
 
@@ -27,6 +27,11 @@
 
     z-index:999999;
 }
+
+.fade-overlay.hide{
+    opacity:.0;
+}
+
 
 .fade-overlay.show{
     opacity:.25;
