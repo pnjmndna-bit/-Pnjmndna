@@ -28,13 +28,13 @@
     z-index:999999;
 }
 
-.fade-overlay.hide{
-    opacity:.0;
+.fade-overlay.show{
+    opacity:1;
 }
 
 
-.fade-overlay.show{
-    opacity:.25;
+.fade-overlay:not(.show){
+    opacity:0;
 }
 
 
