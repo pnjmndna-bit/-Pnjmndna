@@ -14,6 +14,15 @@ document.getElementById("errorBox");
 
 let isShow = false;
 
+/* FADE IN */ 
+window.addEventListener("load", () => {
+
+    document.body.classList.add(
+    "fade-in"
+    );
+
+});
+
 /* ========================= */
 /* RESET LOADING */
 /* ========================= */
@@ -247,6 +256,11 @@ showBtn.addEventListener(
         /* SHOW LOADING */
         loadingBox.style.display =
         "flex";
+
+        /* FADE OUT */
+    document.body.classList.add(
+    "fade-out"
+    );
 
         /* DELAY */
         setTimeout(() => {
