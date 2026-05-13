@@ -203,18 +203,13 @@ lanjutBtn.addEventListener(
     loadingBox.style.display =
     "flex";
 
-     setTimeout(()=>{
-
-         loadingBox.style.display =
-    "none";
-
-     /* FADE OUT */
-    fadeOverlay.classList.add(
-        "show"
-        );
-
     /* PINDAH */
     setTimeout(()=>{
+
+        /* FADE OUT */
+    document.body.classList.add(
+    "fade-out"
+    );
 
         window.location.href =
         "pix.html";
