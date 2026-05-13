@@ -4,6 +4,22 @@
     box-sizing:border-box;
 }
 
+
+/* ========================= */
+/* FADE EFFECT */
+/* ========================= */
+
+body{
+    opacity:0;
+    transition:opacity .4s ease;
+}
+
+body.fade-in{
+    opacity:1;
+}
+
+
+
 html,
 body{
     width:100%;
