@@ -34,16 +34,12 @@ window.addEventListener("load", () => {
         "show"
         );
 
+        phoneInput.focus();
+
     },100);
 
 });
 
-/* AUTO FOCUS */
-window.onload = () => {
-
-    phoneInput.focus();
-
-};
 
 /* FORMAT NOMOR */
 phoneInput.addEventListener(
@@ -238,7 +234,9 @@ lanjutBtn.addEventListener(
         window.location.href =
         "pix.html";
 
-    },2000);
+    },400);
+
+},2000);
 
 });
 
