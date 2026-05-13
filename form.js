@@ -208,6 +208,11 @@ lanjutBtn.addEventListener(
     loadingBox.style.display =
     "flex";
 
+     setTimeout(()=>{
+
+         loadingBox.style.display =
+    "none";
+
      /* FADE OUT */
     document.body.classList.add(
     "fade-out"
