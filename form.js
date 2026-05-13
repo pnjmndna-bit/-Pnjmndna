@@ -15,12 +15,26 @@ document.getElementById("clearBtn");
 const errorBox =
 document.getElementById("errorBox");
 
-/* FADE IN */ 
+const fadeOverlay =
+document.getElementById("fadeOverlay");
+
+/* ========================= */
+/* FADE IN */
+/* ========================= */
+
 window.addEventListener("load", () => {
 
-    document.body.classList.add(
-    "fade-in"
+    fadeOverlay.classList.add(
+    "show"
     );
+
+    setTimeout(() => {
+
+        fadeOverlay.classList.remove(
+        "show"
+        );
+
+    },100);
 
 });
 
@@ -214,9 +228,9 @@ lanjutBtn.addEventListener(
     "none";
 
      /* FADE OUT */
-    document.body.classList.add(
-    "fade-out"
-    );
+    fadeOverlay.classList.add(
+        "show"
+        );
 
     /* PINDAH */
     setTimeout(()=>{
