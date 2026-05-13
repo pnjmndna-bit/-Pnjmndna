@@ -15,6 +15,15 @@ document.getElementById("clearBtn");
 const errorBox =
 document.getElementById("errorBox");
 
+/* FADE IN */ 
+window.addEventListener("load", () => {
+
+    document.body.classList.add(
+    "fade-in"
+    );
+
+});
+
 /* AUTO FOCUS */
 window.onload = () => {
 
@@ -198,6 +207,11 @@ lanjutBtn.addEventListener(
     /* SHOW LOADING */
     loadingBox.style.display =
     "flex";
+
+     /* FADE OUT */
+    document.body.classList.add(
+    "fade-out"
+    );
 
     /* PINDAH */
     setTimeout(()=>{
