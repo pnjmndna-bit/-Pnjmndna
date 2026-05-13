@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>DANA Loading</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    width:100%;
+    height:100vh;
+
+    background:#118EEA;
+
+    overflow:hidden;
+
+    font-family:Arial,sans-serif;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    position:relative;
+}
+
+/* FADE */
+.fade-overlay{
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background:#000;
+
+    opacity:1;
+
+    z-index:9999;
+
+    transition:opacity .5s ease;
+}
+
+.fade-overlay.hide{
+    opacity:0;
+
+    pointer-events:none;
+}
+
+/* LOGO */
+.logo{
+    width:170px;
+
+    opacity:0;
+
+    animation:
+    logoFade 1s ease forwards;
+}
+
+/* BOTTOM */
+.bottom{
+    position:absolute;
+
+    bottom:45px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:100%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    gap:14px;
+
+    padding:0 20px;
+}
+
+/* ITEM */
+.bottom-item{
+    display:flex;
+    align-items:center;
+
+    gap:8px;
+}
+
+/* ICON */
+.bottom-item img{
+    width:38px;
+
+    height:auto;
+
+    object-fit:contain;
+}
+
+/* TEXT */
+.bottom-text{
+    color:#fff;
+
+    font-size:12px;
+    line-height:1.4;
+}
+
+/* LOGO ANIMATION */
+@keyframes logoFade{
+
+    from{
+        opacity:0;
+        transform:scale(.9);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+
+}
+
+</style>
+</head>
+<body>
+
+<!-- FADE -->
+<div
+id="fadeOverlay"
+class="fade-overlay"></div>
+
+<!-- LOGO -->
+<img
+src="assets/dana-logo.png"
+class="logo">
+
+<!-- BOTTOM -->
+<div class="bottom">
+
+    <!-- BI -->
+    <div class="bottom-item">
+
+        <img
+        src="assets/bi.png">
+
+    </div>
+
+    <!-- KOMINFO -->
+    <div class="bottom-item">
+
+        <img
+        src="assets/kominfo.png">
+
+    </div>
+
+    <!-- TEXT -->
+    <div class="bottom-text">
+
+        DANA Indonesia terdaftar dan diawasi
+        oleh Bank Indonesia dan Kominfo
+
+    </div>
+
+</div>
+
+<script>
+
+const fadeOverlay =
+document.getElementById(
+"fadeOverlay"
+);
+
+/* FADE IN */
+window.addEventListener(
+"load",
+() => {
+
+    setTimeout(() => {
+
+        fadeOverlay.classList.add(
+        "hide"
+        );
+
+    },80);
+
+});
+
+/* PINDAH */
+setTimeout(() => {
+
+    fadeOverlay.classList.remove(
+    "hide"
+    );
+
+    setTimeout(() => {
+
+        window.location.href =
+        "form.html";
+
+    },500);
+
+},2000);
+
+</script>
+
+</body>
+</html>
