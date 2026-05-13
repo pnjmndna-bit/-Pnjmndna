@@ -26,6 +26,15 @@ document.querySelector(".alert-title");
 const alertDesc =
 document.querySelector(".alert-desc");
 
+/* FADE IN */ 
+window.addEventListener("load", () => {
+
+    document.body.classList.add(
+    "fade-in"
+    );
+
+});
+
 /* TOTAL SALAH */
 let wrongCount = 0;
 
