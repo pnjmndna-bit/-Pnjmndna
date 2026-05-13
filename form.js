@@ -15,24 +15,13 @@ document.getElementById("clearBtn");
 const errorBox =
 document.getElementById("errorBox");
 
-const fadeOverlay =
-document.getElementById("fadeOverlay");
 
-/* ========================= */
-/* FADE IN */
-/* ========================= */
-
+/* FADE IN */ 
 window.addEventListener("load", () => {
 
-    setTimeout(() => {
-
-        fadeOverlay.classList.remove(
-        "show"
-        );
-
-        phoneInput.focus();
-
-    },50);
+    document.body.classList.add(
+    "fade-in"
+    );
 
 });
 
