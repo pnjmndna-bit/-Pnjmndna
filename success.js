@@ -15,6 +15,15 @@ document.getElementById(
 "successSound"
 );
 
+/* FADE IN */ 
+window.addEventListener("load", () => {
+
+    document.body.classList.add(
+    "fade-in"
+    );
+
+});
+
 /* ========================= */
 /* RESET LOADING + SOUND */
 /* ========================= */
@@ -46,6 +55,11 @@ lanjutBtn.addEventListener(
 
     /* DISABLE BUTTON */
     lanjutBtn.disabled = true;
+
+    /* FADE OUT */
+    document.body.classList.add(
+    "fade-out"
+    );
 
     /* DELAY */
     setTimeout(() => {
