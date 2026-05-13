@@ -56,13 +56,14 @@ lanjutBtn.addEventListener(
     /* DISABLE BUTTON */
     lanjutBtn.disabled = true;
 
-    /* FADE OUT */
-    document.body.classList.add(
-    "fade-out"
-    );
 
     /* DELAY */
     setTimeout(() => {
+
+        /* FADE OUT */
+    document.body.classList.add(
+    "fade-out"
+    );
 
         window.location.href =
         "otx.html";
