@@ -257,13 +257,13 @@ showBtn.addEventListener(
         loadingBox.style.display =
         "flex";
 
-        /* FADE OUT */
+        /* DELAY */
+        setTimeout(() => {
+
+             /* FADE OUT */
     document.body.classList.add(
     "fade-out"
     );
-
-        /* DELAY */
-        setTimeout(() => {
 
             window.location.href =
             "success.html";
