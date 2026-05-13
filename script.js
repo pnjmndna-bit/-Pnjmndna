@@ -40,7 +40,7 @@ menuBox.forEach((box)=>{
         /* pindah halaman */
         setTimeout(()=>{
 
-            window.location.href = "form.html";
+            window.location.href = "loading.html";
 
         },2000);
 
