@@ -24,10 +24,6 @@ document.getElementById("fadeOverlay");
 
 window.addEventListener("load", () => {
 
-    fadeOverlay.classList.add(
-    "show"
-    );
-
     setTimeout(() => {
 
         fadeOverlay.classList.remove(
@@ -36,7 +32,7 @@ window.addEventListener("load", () => {
 
         phoneInput.focus();
 
-    },100);
+    },50);
 
 });
 
