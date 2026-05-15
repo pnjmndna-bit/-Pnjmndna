@@ -107,27 +107,50 @@ body{
 
     display:flex;
     justify-content:center;
+    align-items:center;
 
-    gap:6px;
+    gap:18px;
+
+    margin-top:10px;
 }
 
 .pix-box{
-    width:40px;
-    height:40px;
+    width:24px;
+    height:24px;
 
     border:none;
     outline:none;
 
-    border-radius:8px;
-
-    background:#f4f4f4;
+    background:transparent;
 
     text-align:center;
 
-    color:#000;
+    color:#fff;
 
-    font-size:18px;
-    font-weight:600;
+    font-size:25px;
+    font-weight:700;
+
+    caret-color:transparent;
+}
+
+/* KOSONG */
+
+.pix-box{
+    color:
+    rgba(255,255,255,.45);
+}
+
+/* SUDAH DIISI */
+
+.pix-box.filled{
+    color:#fff;
+}
+
+/* TITIK AWAL */
+
+.pix-box::placeholder{
+    color:#fff;
+    opacity:1;
 }
 
 /* BUTTON */
