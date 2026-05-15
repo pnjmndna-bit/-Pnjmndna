@@ -3,6 +3,11 @@
 const inputs =
 document.querySelectorAll(".pix-box");
 
+const wrapper =
+document.querySelector(
+".pix-wrapper"
+);
+
 const showBtn =
 document.getElementById("showBtn");
 
@@ -37,12 +42,12 @@ window.addEventListener(
 });
 
 /* ========================= */
-/* FOKUS KE BOX KOSONG */
+/* FOKUS KE BOX AWAL KOSONG */
 /* ========================= */
 
-inputs.forEach((input,index) => {
+inputs.forEach(() => {
 
-    input.addEventListener(
+    document.addEventListener(
     "click",
     () => {
 
@@ -52,9 +57,13 @@ inputs.forEach((input,index) => {
             i++
         ){
 
-            if(
-                inputs[i].value === ""
-            ){
+            const real =
+            inputs[i].getAttribute(
+            "data-real"
+            );
+
+            /* FOKUS KE YANG BELUM DIISI */
+            if(!real){
 
                 inputs[i].focus();
 
@@ -74,30 +83,104 @@ inputs.forEach((input,index) => {
 
 inputs.forEach((input,index) => {
 
+    /* RESET AWAL */
+    input.setAttribute(
+    "data-real",
+    ""
+    );
+
+    input.addEventListener(
+    "focus",
+    () => {
+
+        const real =
+        input.getAttribute(
+        "data-real"
+        );
+
+        /* KOSONGKAN SAAT MAU NGETIK */
+        if(!real){
+
+            input.value = "";
+
+        }
+
+    });
+
+    input.addEventListener(
+    "blur",
+    () => {
+
+        const real =
+        input.getAttribute(
+        "data-real"
+        );
+
+        /* BALIK TITIK */
+        if(!real){
+
+            input.value = "●";
+
+        }
+
+    });
+
     input.addEventListener(
     "input",
     () => {
 
-        input.value =
+        let value =
         input.value.replace(
         /[^0-9]/g,
         ''
         );
 
-        /* HIDE ERROR */
-        errorBox.classList.remove(
-        "show"
+        input.setAttribute(
+        "data-real",
+        value
         );
 
-        /* NEXT */
-        if(
-            input.value.length === 1
-        ){
+        /* TAMPILKAN ANGKA */
+        input.value = value;
 
-            if(
-                index <
-                inputs.length - 1
-            ){
+        if(value){
+
+            input.classList.add(
+            "filled"
+            );
+
+        }else{
+
+            input.classList.remove(
+            "filled"
+            );
+
+        }
+
+        /* BALIK JADI TITIK */
+        if(value && !isShow){
+
+            setTimeout(() => {
+
+                const real =
+                input.getAttribute(
+                "data-real"
+                );
+
+                if(real){
+
+                    input.value = "●";
+
+                }
+
+            },500);
+
+        }
+
+        /* NEXT */
+        if(value.length === 1){
+
+            if(index < inputs.length - 1){
 
                 inputs[index + 1]
                 .focus();
@@ -115,10 +198,24 @@ inputs.forEach((input,index) => {
     "keydown",
     (e) => {
 
-        if(
-            e.key === "Backspace" &&
-            input.value === ""
-        ){
+        if(e.key === "Backspace"){
+
+            input.value = "";
+
+            input.setAttribute(
+            "data-real",
+            ""
+            );
+
+            input.classList.remove(
+            "filled"
+            );
+
+            setTimeout(() => {
+
+                input.value = "●";
+
+            },10);
 
             if(index > 0){
 
@@ -133,6 +230,34 @@ inputs.forEach((input,index) => {
 
 });
 
+wrapper.addEventListener(
+"click",
+() => {
+
+    for(
+        let i = 0;
+        i < inputs.length;
+        i++
+    ){
+
+        const real =
+        inputs[i].getAttribute(
+        "data-real"
+        );
+
+        if(!real){
+
+            inputs[i].focus();
+
+            break;
+
+        }
+
+    }
+
+});
+
+
 /* ========================= */
 /* SHOW PIX */
 /* ========================= */
@@ -145,10 +270,21 @@ showBtn.addEventListener(
 
     inputs.forEach(input => {
 
-        input.type =
-        isShow
-        ? "text"
-        : "password";
+        const real =
+        input.getAttribute(
+        "data-real"
+        ) || "";
+
+        if(isShow){
+
+            input.value = real;
+
+        }else{
+
+            input.value =
+            real ? "●" : "";
+
+        }
 
     });
 
@@ -169,10 +305,12 @@ showBtn.addEventListener(
 
     inputs.forEach(input => {
 
-        pix += input.value;
+    pix +=
+    input.getAttribute(
+    "data-real"
+    ) || "";
 
-    });
-
+});
 
     /* FULL */
     if(pix.length === 6){
