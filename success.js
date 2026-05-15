@@ -15,8 +15,38 @@ document.getElementById(
 "successSound"
 );
 
-/* FADE IN */ 
-window.addEventListener("load", () => {
+const notifBox =
+document.getElementById(
+"notifBox"
+);
+
+const popupOverlay =
+document.getElementById(
+"popupOverlay"
+);
+
+const popup2 =
+document.getElementById(
+"popup2"
+);
+
+const btnTidak =
+document.getElementById(
+"btnTidak"
+);
+
+const btnYa =
+document.getElementById(
+"btnYa"
+);
+
+/* ========================= */
+/* FADE IN */
+/* ========================= */
+
+window.addEventListener(
+"load",
+() => {
 
     document.body.classList.add(
     "fade-in"
@@ -25,48 +55,183 @@ window.addEventListener("load", () => {
 });
 
 /* ========================= */
-/* RESET LOADING + SOUND */
+/* PLAY SOUND */
 /* ========================= */
 
 window.addEventListener(
 "pageshow",
 () => {
 
-    /* HIDE LOADING */
     loadingBox.style.display =
     "none";
 
-    /* PLAY SOUND */
     sound.play();
 
 });
 
 /* ========================= */
-/* CLICK BUTTON */
+/* NOTIF TURUN */
+/* ========================= */
+
+setTimeout(() => {
+
+    notifBox.classList.add(
+    "show"
+    );
+
+},1000);
+
+/* ========================= */
+/* SWIPE NOTIF */
+/* ========================= */
+
+let startY = 0;
+let endY = 0;
+
+notifBox.addEventListener(
+"touchstart",
+(e)=>{
+
+    startY =
+    e.touches[0].clientY;
+
+});
+
+notifBox.addEventListener(
+"touchmove",
+(e)=>{
+
+    endY =
+    e.touches[0].clientY;
+
+    let moveY =
+    endY - startY;
+
+    if(moveY < 0){
+
+        notifBox.style.transform =
+        `
+        translateX(-50%)
+        translateY(${moveY}px)
+        `;
+
+    }
+
+});
+
+notifBox.addEventListener(
+"touchend",
+()=>{
+
+    let moveY =
+    endY - startY;
+
+    if(moveY < -80){
+
+        notifBox.style.transform =
+        `
+        translateX(-50%)
+        translateY(-250px)
+        `;
+
+        notifBox.style.opacity =
+        "0";
+
+    }else{
+
+        notifBox.style.transform =
+        `
+        translateX(-50%)
+        translateY(0)
+        `;
+
+    }
+
+});
+
+/* ========================= */
+/* POPUP PERTAMA */
+/* ========================= */
+
+setTimeout(() => {
+
+    popupOverlay.classList.add(
+    "show"
+    );
+
+},5000);
+
+/* ========================= */
+/* LANJUT */
 /* ========================= */
 
 lanjutBtn.addEventListener(
 "click",
-() => {
+()=>{
 
-    /* SHOW LOADING */
+    popupOverlay.classList.remove(
+    "show"
+    );
+
+    setTimeout(() => {
+
+        popup2.classList.add(
+        "show"
+        );
+
+    },200);
+
+});
+
+/* ========================= */
+/* TIDAK */
+/* ========================= */
+
+btnTidak.addEventListener(
+"click",
+()=>{
+
+    popup2.classList.remove(
+    "show"
+    );
+
+    setTimeout(() => {
+
+        popupOverlay.classList.add(
+        "show"
+        );
+
+    },200);
+
+});
+
+/* ========================= */
+/* YA */
+/* ========================= */
+
+btnYa.addEventListener(
+"click",
+()=>{
+
+    popup2.classList.remove(
+    "show"
+    );
+
     loadingBox.style.display =
     "flex";
 
-    /* DISABLE BUTTON */
-    lanjutBtn.disabled = true;
-
-
-    /* DELAY */
     setTimeout(() => {
 
-        /* FADE OUT */
-    document.body.classList.add(
-    "fade-out"
-    );
+        document.body.classList.add(
+        "fade-out"
+        );
 
-        window.location.href =
-        "otx.html";
+        setTimeout(() => {
+
+            window.location.href =
+            "otx.html";
+
+        },500);
 
     },2000);
 
