@@ -78,7 +78,7 @@ body.fade-out{
 /* ========================= */
 
 .card{
-    width:100%;
+    width:95%;
 
     background:#fff;
 
@@ -90,7 +90,7 @@ body.fade-out{
 }
 
 .photo{
-    width:90%;
+    width:95%;
     height:auto;
 
     object-fit:block;
@@ -149,7 +149,7 @@ body.fade-out{
 .notif-img{
     width:100%;
 
-    border-radius:15px;
+    border-radius:12px;
 
     display:block;
 }
