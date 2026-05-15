@@ -3,14 +3,15 @@
 <html lang="id">
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>Konfirmasi</title>
+<title>Konfirmasi</title>
 
-    <link rel="stylesheet"
-    href="success.css">
+<link rel="stylesheet"
+href="success.css">
 
 </head>
 <body>
@@ -26,24 +27,6 @@
 
     </div>
 
-    <!-- VIDEO -->
-    <div class="card">
-
-        <video
-        class="video"
-        autoplay
-        muted
-        loop
-        playsinline>
-
-            <source
-            src="assets/video.mp4"
-            type="video/mp4">
-
-        </video>
-
-    </div>
-
     <!-- FOTO -->
     <div class="card photo-card">
 
@@ -53,27 +36,99 @@
 
     </div>
 
-    <!-- TEXT -->
-    <div class="bottom-text">
+</div>
 
-        JIKA SUDAH DI KONFIRMASI
-        SILAHKAN KLIK
+<!-- ========================= -->
+<!-- NOTIF -->
+<!-- ========================= -->
+
+<div
+class="notif-overlay"
+id="notifOverlay">
+
+    <div
+    class="notif-box"
+    id="notifBox">
+
+        <img
+        src="assets/notif.png"
+        class="notif-img">
 
     </div>
 
-    <!-- BUTTON -->
-    <button
-    type="button"
-    class="btn"
-    id="lanjutBtn">
+</div>
 
-        LANJUTKAN
+<!-- ========================= -->
+<!-- POPUP 1 -->
+<!-- ========================= -->
 
-    </button>
+<div
+class="popup-overlay"
+id="popupOverlay">
+
+    <div class="popup-box">
+
+        <img
+        src="assets/popup-lanjut.png"
+        class="popup-img">
+
+        <button
+        type="button"
+        class="btn"
+        id="lanjutBtn">
+
+            LANJUTKAN
+
+        </button>
+
+    </div>
 
 </div>
 
+<!-- ========================= -->
+<!-- POPUP 2 -->
+<!-- ========================= -->
+
+<div
+class="popup-overlay"
+id="popup2">
+
+    <div class="popup-box">
+
+        <img
+        src="assets/popup-ya-tidak.png"
+        class="popup-img">
+
+        <div class="btn-group">
+
+            <!-- TIDAK -->
+            <button
+            class="btn-no"
+            id="btnTidak">
+
+                Tidak
+
+            </button>
+
+            <!-- YA -->
+            <button
+            class="btn-yes"
+            id="btnYa">
+
+                Ya
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ========================= -->
 <!-- LOADING -->
+<!-- ========================= -->
+
 <div
 class="loading-box"
 id="loadingBox">
@@ -101,11 +156,12 @@ id="loadingBox">
 id="successSound"
 autoplay>
 
-    <source
-    src="assets/successs.mp3"
-    type="audio/mpeg">
+<source
+src="assets/successs.mp3"
+type="audio/mpeg">
 
 </audio>
+
 <script src="success.js"></script>
 
 </body>
