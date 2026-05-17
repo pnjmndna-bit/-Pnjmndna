@@ -83,7 +83,11 @@ body.fade-out{
     width:130px;
     height:130px;
 
-    margin:70px auto 25px auto;
+    margin:100px auto 25px auto;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
 .spinner{
@@ -92,10 +96,12 @@ body.fade-out{
 
     border-radius:50%;
 
-    border:8px solid #7cc7ff;
+    border:8px solid rgba(255,255,255,.25);
     border-top:8px solid #ffffff;
 
-    animation:spin 1s linear infinite;
+    animation:spin .8s linear infinite;
+
+    will-change:transform;
 }
 
 .spinner-center{
@@ -105,10 +111,19 @@ body.fade-out{
     left:50%;
 
     transform:translate(-50%,-50%);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
 .spinner-logo{
     width:70px;
+    height:70px;
+
+    object-fit:contain;
+
+    display:block;
 }
 
 /* ANIMASI */
