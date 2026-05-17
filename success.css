@@ -83,7 +83,7 @@ body.fade-out{
     width:130px;
     height:130px;
 
-    margin:50px auto 25px auto;
+    margin:70px auto 25px auto;
 }
 
 .spinner{
@@ -122,6 +122,8 @@ body.fade-out{
     border-radius:50%;
 
     background:#118EEA;
+
+    z=index:1;
 }
 
 .spinner-center{
@@ -131,10 +133,18 @@ body.fade-out{
     left:50%;
 
     transform:translate(-50%,-50%);
+
+    z-index:10;
 }
 
 .spinner-logo{
     width:70px;
+
+    position:relative;
+
+    z-index:11;
+
+    display:block;
 }
 
 /* ========================= */
