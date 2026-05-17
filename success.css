@@ -92,12 +92,10 @@ body.fade-out{
 
     border-radius:50%;
 
-    border:8px solid rgba(255,255,255,.25);
-
+    border:8px solid #7cc7ff;
     border-top:8px solid #ffffff;
 
-    animation:
-    spinnerRotate 1s linear infinite;
+    animation:spin 1s linear infinite;
 }
 
 .spinner-center{
@@ -111,12 +109,20 @@ body.fade-out{
 
 .spinner-logo{
     width:70px;
+}
 
-    position:relative;
+/* ANIMASI */
 
-    z-index:11;
+@keyframes spin{
 
-    display:block;
+    0%{
+        transform:rotate(0deg);
+    }
+
+    100%{
+        transform:rotate(360deg);
+    }
+
 }
 
 /* ========================= */
